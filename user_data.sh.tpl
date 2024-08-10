@@ -15,9 +15,6 @@ sudo reboot
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Criar o diretório se não existir
-mkdir -p /home/ubuntu/migration
-
 # Clonar o repositório
 git clone https://github.com/lvgalvao/migration /home/ubuntu/migration
 
