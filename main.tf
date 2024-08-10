@@ -103,7 +103,6 @@ resource "azurerm_linux_virtual_machine" "example" {
     username   = var.admin_username
     public_key = file("~/.ssh/id_rsa.pub")  # Caminho para o seu arquivo de chave pública
   }
-  
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"

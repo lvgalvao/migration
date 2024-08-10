@@ -30,11 +30,8 @@ cd /home/ubuntu/migration
 docker build -t fastapi-app .
 
 # Configurar variáveis de ambiente para o banco de dados
-export DATABASE_URL="mssql+pyodbc://${db_username}:${db_password}@${db_address}:1433/${db_name}?driver=ODBC+Driver+17+for+SQL+Server"
+export DATABASE_URL="mssql+pyodbc://${db_username}:${db_password}@${db_address}:1433/example-db?driver=ODBC+Driver+17+for+SQL+Server"
 
 # Executar o contêiner Docker com a variável de ambiente configurada
 docker run -p 80:80 \
-  -e DB_USER="${db_username}" \
-  -e DB_PASSWORD="${db_password}" \
-  -e DB_HOST="${db_address}" \
-  -e DB_NAME="${db_name}" fastapi-app
+  -e DATABASE_URL="mssql+pyodbc://${db_username}:${db_password}@${db_address}:1433/example-db?driver=ODBC+Driver+17+for+SQL+Server" fastapi-app
