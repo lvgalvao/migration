@@ -101,7 +101,7 @@ resource "aws_security_group" "allow_ec2_rds" {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/16"]  # Permitir tráfego da subnet privada
+    cidr_blocks = ["10.0.0.0/16"] # Permitir tráfego da subnet privada
   }
 
   # Regra para permitir acesso SSH (porta 22) de qualquer lugar
@@ -109,7 +109,7 @@ resource "aws_security_group" "allow_ec2_rds" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Permitir acesso SSH de qualquer lugar
+    cidr_blocks = ["0.0.0.0/0"] # Permitir acesso SSH de qualquer lugar
   }
 
   # Regra para permitir acesso HTTP (porta 80) de qualquer lugar
@@ -117,7 +117,7 @@ resource "aws_security_group" "allow_ec2_rds" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Permitir acesso HTTP de qualquer lugar
+    cidr_blocks = ["0.0.0.0/0"] # Permitir acesso HTTP de qualquer lugar
   }
 
   # Regras de egress (saída) permitindo todo o tráfego de saída
@@ -135,7 +135,7 @@ resource "aws_security_group" "allow_ec2_rds" {
 
 # Criar um grupo de subnets para o RDS PostgreSQL cobrindo duas AZs
 resource "aws_db_subnet_group" "postgres" {
-  name       = "postgres-subnet-group"
+  name = "migrationpostgres-subnet-group"
   subnet_ids = [
     aws_subnet.private_a.id,
     aws_subnet.private_b.id
@@ -148,18 +148,18 @@ resource "aws_db_subnet_group" "postgres" {
 
 # RDS PostgreSQL com Multi-AZ Desativado
 resource "aws_db_instance" "postgres" {
-  engine            = "postgres"
-  engine_version    = "16.3"  # Mantém a versão atual
-  instance_class    = "db.t3.micro"
-  allocated_storage = 20
-  db_name           = var.db_name
-  username          = var.db_username
-  password          = var.db_password
-  publicly_accessible = false
-  multi_az          = false  # Desativando Multi-AZ
+  engine                 = "postgres"
+  engine_version         = "16.3" # Mantém a versão atual
+  instance_class         = "db.t3.micro"
+  allocated_storage      = 20
+  db_name                = var.db_name
+  username               = var.db_username
+  password               = var.db_password
+  publicly_accessible    = false
+  multi_az               = false # Desativando Multi-AZ
   vpc_security_group_ids = [aws_security_group.allow_ec2_rds.id]
-  db_subnet_group_name = aws_db_subnet_group.postgres.name
-  skip_final_snapshot = true
+  db_subnet_group_name   = aws_db_subnet_group.postgres.name
+  skip_final_snapshot    = true
 
   tags = {
     Name = "MigrationPostgresDBInstance"
@@ -172,7 +172,7 @@ resource "aws_instance" "web" {
   ami           = var.image_id
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_a.id
-  
+
   vpc_security_group_ids = [aws_security_group.allow_ec2_rds.id]
 
   user_data = base64encode(templatefile("user_data.sh.tpl", {

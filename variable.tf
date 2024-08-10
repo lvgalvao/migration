@@ -13,7 +13,7 @@ variable "db_password" {
 }
 
 variable "image_id" {
-  default     = "ami-0870650fde0fef2d4"
+  default     = "ami-09523541dfaa61c85"
   type        = string
   description = "The ID of the machine image (AMI) to use for the server."
 
