@@ -16,9 +16,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 # Clonar o repositório
-git clone https://github.com/lvgalvao/migration /home/ubuntu/migration
-
-git checkout azure
+sudo git clone --branch azure https://github.com/lvgalvao/migration /home/ubuntu/migration
 
 # Mudar para o diretório do repositório
 cd /home/ubuntu/migration
