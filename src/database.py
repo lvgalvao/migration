@@ -6,8 +6,10 @@ import os
 # Obter as variáveis de ambiente separadas
 database_url = os.getenv("DATABASE_URL")
 
+
 # Construir o SQLALCHEMY_DATABASE_URL
-SQLALCHEMY_DATABASE_URL = database_url
+SQLALCHEMY_DATABASE_URL = f"mssql+pymssql://{database_url}"
+
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

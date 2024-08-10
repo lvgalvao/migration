@@ -10,7 +10,7 @@ sudo usermod -aG docker ec2-user
 cd /home/ec2-user/migration
 
 # Configurar a variável de ambiente para o banco de dados
-export DATABASE_URL="sqlserver://${db_username}:${db_password}@${db_address}:1433/${db_name}"
+export DATABASE_URL="mssql+pyodbc://${db_username}:${db_password}@${db_address}:1433/${db_name}?driver=ODBC+Driver+17+for+SQL+Server"
 
 # Construir a imagem Docker
 docker build -t fastapi-app .
