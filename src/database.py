@@ -10,7 +10,7 @@ db_host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
 
 # Construir o SQLALCHEMY_DATABASE_URL
-SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:5432/{db_name}"
+SQLALCHEMY_DATABASE_URL = f"mssql+pyodbc://{db_user}:{db_password}@{db_host}:5432/{db_name}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

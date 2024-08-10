@@ -110,3 +110,5 @@ flowchart TD
     F --> |Não| J[Validação Final e Documentação]
     J --> K[Fim]
 ```
+
+https://github.com/hashicorp/terraform-provider-azurerm/issues/9344

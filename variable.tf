@@ -1,24 +1,43 @@
-# Arquivo variables.tf
+# variables.tf
 
-variable "db_name" {
-  type = string
-}
-
-variable "db_username" {
-  type = string
-}
-
-variable "db_password" {
-  type = string
-}
-
-variable "image_id" {
-  default     = "ami-09523541dfaa61c85"
+variable "resource_group_name" {
+  description = "Nome do Resource Group"
   type        = string
-  description = "The ID of the machine image (AMI) to use for the server."
+  default     = "myResourceGroup"
+}
 
-  validation {
-    condition     = length(var.image_id) > 4 && substr(var.image_id, 0, 4) == "ami-"
-    error_message = "The image_id value must be a valid AMI ID, starting with \"ami-\"."
-  }
+variable "location" {
+  description = "Localização do Resource Group"
+  type        = string
+  default     = "Brazil South"
+}
+
+variable "sql_server_name" {
+  description = "Nome do servidor SQL"
+  type        = string
+  default     = "mysqlserver1238437928398"
+}
+
+variable "admin_username" {
+  description = "Nome de usuário do administrador"
+  type        = string
+  default     = "adminuser"
+}
+
+variable "admin_password" {
+  description = "Senha do administrador"
+  type        = string
+  default     = "My$trongP@ssw0rd2024!"
+}
+
+variable "public_ip_allocation_method" {
+  description = "Método de alocação do IP público"
+  type        = string
+  default     = "Static"
+}
+
+variable "vm_size" {
+  description = "Tamanho da máquina virtual"
+  type        = string
+  default     = "Standard_F2"
 }
