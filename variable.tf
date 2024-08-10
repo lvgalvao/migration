@@ -15,7 +15,6 @@ variable "location" {
 variable "sql_server_name" {
   description = "Nome do servidor SQL"
   type        = string
-  default     = "mysqlserver1238437928398"
 }
 
 variable "admin_username" {
@@ -27,7 +26,6 @@ variable "admin_username" {
 variable "admin_password" {
   description = "Senha do administrador"
   type        = string
-  default     = "My$trongP@ssw0rd2024!"
 }
 
 variable "public_ip_allocation_method" {

@@ -2,21 +2,21 @@
 # Atualizar os pacotes do sistema
 sudo apt update -y
 
-# Instalar o Git
-sudo apt install git -y
-
-# Clonar o repositório
-git clone https://github.com/lvgalvao/migration /home/ubuntu/migration
-
-# Instalar o Docker
-sudo apt install docker.io -y
+# Instalar o Git e o Docker
+sudo apt install git docker.io -y
 
 # Iniciar e habilitar o Docker
 sudo systemctl start docker
 sudo systemctl enable docker
 
 # Adicionar o usuário ao grupo Docker
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker $USER
+
+# Criar o diretório se não existir
+mkdir -p /home/ubuntu/migration
+
+# Clonar o repositório
+git clone https://github.com/lvgalvao/migration /home/ubuntu/migration
 
 # Mudar para o diretório do repositório
 cd /home/ubuntu/migration
