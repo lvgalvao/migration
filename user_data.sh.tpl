@@ -21,6 +21,8 @@ mkdir -p /home/ubuntu/migration
 # Clonar o repositório
 git clone https://github.com/lvgalvao/migration /home/ubuntu/migration
 
+git checkout azure
+
 # Mudar para o diretório do repositório
 cd /home/ubuntu/migration
 
