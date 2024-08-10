@@ -9,8 +9,7 @@ print(database_url)
 
 
 # Construir o SQLALCHEMY_DATABASE_URL
-SQLALCHEMY_DATABASE_URL = f"mssql+pymssql://{database_url}"
-
+SQLALCHEMY_DATABASE_URL = database_url
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

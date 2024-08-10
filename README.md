@@ -112,3 +112,5 @@ flowchart TD
 ```
 
 https://github.com/hashicorp/terraform-provider-azurerm/issues/9344
+
+ssh -i ~/.ssh/id_rsa adminuser@104.41.45.245
