@@ -3,6 +3,7 @@ sudo dnf update -y
 sudo dnf install git -y
 git clone https://github.com/lvgalvao/migration /home/ec2-user/migration
 sudo dnf install docker -y
+git checkout azure
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
