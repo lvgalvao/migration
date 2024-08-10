@@ -4,12 +4,10 @@ sudo apt update -y
 
 # Instalar o Git e o Docker
 sudo apt install git docker.io -y
+sudo apt-get install apt-utils
 
 # Iniciar e habilitar o Docker
 sudo usermod -aG docker adminuser
-
-# Adicionar o usuário ao grupo Docker
-sudo reboot
 
 # (Opcional) Após reiniciar a sessão, verifique o status do Docker e inicie/habilite o serviço se necessário
 sudo systemctl start docker
