@@ -22,11 +22,11 @@ sudo git clone --branch azure https://github.com/lvgalvao/migration /home/ubuntu
 cd /home/ubuntu/migration
 
 # Construir a imagem Docker
-docker build -t fastapi-app .
+sudo docker build -t fastapi-app .
 
 # Configurar variáveis de ambiente para o banco de dados
 export DATABASE_URL="mssql+pyodbc://${db_username}:${db_password}@${db_address}:1433/example-db?driver=ODBC+Driver+17+for+SQL+Server"
 
 # Executar o contêiner Docker com a variável de ambiente configurada
-docker run -p 80:80 \
+sudo docker run -p 80:80 \
   -e DATABASE_URL="mssql+pyodbc://${db_username}:${db_password}@${db_address}:1433/example-db?driver=ODBC+Driver+17+for+SQL+Server" fastapi-app
