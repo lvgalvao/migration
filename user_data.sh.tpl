@@ -1,12 +1,12 @@
 #!/bin/bash
 sudo dnf update -y
 sudo dnf install git -y
-git clone https://github.com/lvgalvao/fastapi-deploy-ec2 /home/ec2-user/fastapi-deploy-ec2
+git clone https://github.com/lvgalvao/migration /home/ec2-user/migration
 sudo dnf install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
-cd /home/ec2-user/fastapi-deploy-ec2
+cd /home/ec2-user/migration
 
 # Configurar a variável de ambiente para o banco de dados usando o output do Terraform
 export DATABASE_URL="postgresql://${db_username}:${db_password}@${db_address}:5432/${db_name}"
