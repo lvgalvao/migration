@@ -5,6 +5,7 @@ import os
 
 # Obter as variáveis de ambiente separadas
 database_url = os.getenv("DATABASE_URL")
+print(database_url)
 
 
 # Construir o SQLALCHEMY_DATABASE_URL

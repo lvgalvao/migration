@@ -6,11 +6,14 @@ sudo apt update -y
 sudo apt install git docker.io -y
 
 # Iniciar e habilitar o Docker
-sudo systemctl start docker
-sudo systemctl enable docker
+sudo usermod -aG docker adminuser
 
 # Adicionar o usuário ao grupo Docker
-sudo usermod -aG docker $USER
+sudo reboot
+
+# (Opcional) Após reiniciar a sessão, verifique o status do Docker e inicie/habilite o serviço se necessário
+sudo systemctl start docker
+sudo systemctl enable docker
 
 # Criar o diretório se não existir
 mkdir -p /home/ubuntu/migration
